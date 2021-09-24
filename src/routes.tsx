@@ -8,7 +8,7 @@ const Stack = createNativeStackNavigator();
 const Routes = () =>{
     return(
         <NavigationContainer>
-            <Stack.Navigator initialRouteName="Login"
+            <Stack.Navigator initialRouteName="Home"
                 screenOptions={{
                     headerShown:false,
                 }}
