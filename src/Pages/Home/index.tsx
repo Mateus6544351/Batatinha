@@ -1,21 +1,15 @@
-import { StatusBar } from 'expo-status-bar';
 import React from "react";
 import { View, Text, StyleSheet, Image, TextInput } from "react-native";
+import { StatusBar } from 'expo-status-bar';
+
+import { stylesLink } from "./styles";
 
 const LinkItem = (props: any)=>{
     return(
       <Text style={stylesLink.text}>{props.name}</Text> 
     );
   };
-  const stylesLink = StyleSheet.create({
-    text: {
-      //backgroundColor: "red",
-      marginTop: 10,
-      color: "#4A4A4C",
-      fontSize: 13.71,
-  
-    }
-  });
+ 
   const stylesLinkImportantes = StyleSheet.create({
     container: {
       flexDirection: "row",
