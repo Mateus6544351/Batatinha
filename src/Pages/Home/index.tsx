@@ -1,27 +1,18 @@
 import React from "react";
-import { View, Text, StyleSheet, Image, TextInput } from "react-native";
+import { View, Text, Image, TextInput, TouchableOpacity} from "react-native";
 import { StatusBar } from 'expo-status-bar';
+import {useNavigation} from '@react-navigation/native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 
-import { stylesLink } from "./styles";
+import { stylesLink, stylesLinkImportantes, styles } from "./styles";
+import { NativeStackNavigatorProps } from "@react-navigation/native-stack/lib/typescript/src/types";
+import { StackNavigatorParamList } from "../../../types";
 
 const LinkItem = (props: any)=>{
     return(
       <Text style={stylesLink.text}>{props.name}</Text> 
     );
   };
- 
-  const stylesLinkImportantes = StyleSheet.create({
-    container: {
-      flexDirection: "row",
-      justifyContent: "space-between",
-      paddingHorizontal: 40,
-      paddingVertical: 10,
-      
-      borderBottomColor: "red",
-      borderBottomWidth: 1,
-  
-    }
-  });
   
   const LinksImportantes = ()=>{
     return(
@@ -35,7 +26,16 @@ const LinkItem = (props: any)=>{
       </View>);// bla bla bla
   };
 
+type HomeProps = NativeStackNavigationProp<StackNavigatorParamList,"Home">;
+
 const Home = () => {
+  
+  const navigation = useNavigation<HomeProps>();
+
+  function irParaTelaLogin(){
+    navigation.navigate('Login');
+  }
+
     return(
         <View style={styles.container}>
       <View style={styles.header}>
@@ -52,39 +52,15 @@ const Home = () => {
       </View>
       <LinksImportantes />
       <StatusBar style="auto" />
+      <View>
+        <View style={styles.conteudoFacebook}>
+          <TouchableOpacity style={styles.meubotao} onPress={irParaTelaLogin}>
+              <Text style={styles.meubotaoTexto}>Botão</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
     </View>
     );   
 }
 
-    const styles = StyleSheet.create({
-        container: {
-        flex: 1,
-        },
-    
-        header: {
-            minHeight: 93,
-            backgroundColor: "#4369B0",
-            paddingTop: 40,
-            flexDirection: "row",
-            justifyContent: "space-between",
-            paddingHorizontal: 30,
-        },
-    
-        inputTextView: {
-        flex: 3,
-        backgroundColor: "#2C4877",
-        height: 40,
-        marginHorizontal: 10,
-        alignItems: "center",
-        borderRadius: 28,
-        flexDirection: 'row',
-        },
-        TextInput: {
-        color: "#F5FFFF",
-        //maxWidth: 200,
-        flex: 1,
-        paddingRight: 10,
-        },
-    });
-  
 export default Home;
