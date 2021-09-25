@@ -15,9 +15,16 @@ const Login = () => {
             <View style={styles.inputTextView} >
                 <TextInput placeholder="Senha" placeholderTextColor="#A19FA1" style={styles.TextInput}/>
             </View>
+            <View style={styles.inputTextView} >
+                <Text style={styles.TextInput}>Log In</Text>
             </View>
-            <Text>Login</Text>
+            </View>
+            <View style={{alignItems: "center",}}>
+                <Text style={{color: "white",marginTop: 50,}}>Sign Up for FaceBook</Text>
+            </View>
         </View>
+        
+       
     );
     
 }
@@ -25,7 +32,8 @@ const Login = () => {
         container: {
         flex: 1,
         backgroundColor: "#3b5998",
-        paddingTop: 250,
+        
+        justifyContent: "center",
         },
 
         logo: {
@@ -58,6 +66,7 @@ const Login = () => {
             marginTop: 30,
             alignItems: "center",
             flexDirection: 'row',
+            
         },
 
     });
