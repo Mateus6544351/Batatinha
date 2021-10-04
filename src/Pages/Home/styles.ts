@@ -67,7 +67,7 @@ export  const stylesLink = StyleSheet.create({
         flex:1,
         // backgroundColor:"#F0F500",
         justifyContent:'flex-end',
-        paddingVertical:40,
+
     },
 
     meubotaoTexto:{
