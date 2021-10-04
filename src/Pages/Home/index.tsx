@@ -61,10 +61,11 @@ const Home = () => {
               <Text style={styles.meubotaoTexto}>Botão</Text>
           </TouchableOpacity>
         </View>
-        <ScrollView>
-          <Post />
-        </ScrollView>
+        
       </View>
+      <ScrollView>
+          <Post />
+      </ScrollView>
     </View>
     );   
 }
