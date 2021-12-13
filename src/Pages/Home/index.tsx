@@ -1,4 +1,5 @@
 import * as React from 'react';
+
 import {
   Text,
   View,
@@ -7,6 +8,7 @@ import {
   Image,
   TextInput,
   ScrollView,
+  TouchableOpacity,
 } from 'react-native';
 import Constants from 'expo-constants';
 
@@ -67,6 +69,22 @@ const DATA = [
   },
 ];
 
+const DATA2 = [
+  {
+    id: 1,
+    nome: 'Bate-Papo',
+  },
+  {
+    id: 1,
+    nome: 'Ligações',
+  },
+  {
+    id: 1,
+    nome: 'Solicitações',
+    
+  },
+];
+
 export default function App() {
   const renderItemAgenda = ({ item }) => {
     return (
@@ -102,6 +120,20 @@ export default function App() {
       </View>
     );
   };
+
+  const renderItem2 = ({ item, onPress }) => {
+    return (
+      <View>
+        <View>
+            <TouchableOpacity onPress={onPress} style={[styles.item]}>
+              <Text style={[styles.flatText2]}>{item.nome}</Text>
+            </TouchableOpacity>
+          
+          </View>
+      </View>
+    );
+  };
+
   return (
     <View style={styles.container}>
       <ScrollView>
@@ -120,7 +152,20 @@ export default function App() {
       }}
       />
         </View>
-
+        <View>
+        <FlatList
+          data={DATA2}
+          renderItem={renderItem2}
+          keyExtractor={(item) => item.id}
+          horizontal={true}
+          contentContainerStyle={{
+            flexDirection: 'row',
+            //flexWrap: 'nowrap',
+            justifyContent: 'space-between',
+            //backgroundColor:"red",  
+          }}
+        />
+        </View>
         <FlatList
           data={dados}
           keyExtractor={(item) => item.id}
@@ -286,5 +331,29 @@ const styles = StyleSheet.create({
   FlatList2: {
     justifyContent: 'space-between',
     flexDirection: 'row',
+  },
+  flatText2: {
+    paddingTop:1,
+    fontSize:20,
+    color: "white",
+    height: 40,
+    maxWidth:150,
+    flexDirection: 'row',
+    marginRight: 43,
+    justifyContent: 'space-between',
+    fontWeight: "bold",
+  },
+  Item: {
+    paddingTop:1,
+    fontSize:20,
+    color: "white",
+    height: 40,
+    maxWidth:150,
+    flexDirection: 'row',
+    marginRight: 43,
+    justifyContent: 'space-between',
+    fontWeight: "bold",
+    borderTopColor: "white",
+    borderTopWidth: 5,
   },
 });
