@@ -44,6 +44,29 @@ const dados = [
   },
 ];
 
+const DATA = [
+  {
+    id: 1,
+    nome: '',
+    foto: 'https://lh5.googleusercontent.com/CNgzJPG3Ssk301DIy_jBgQy165V_P2f6cgykQv6JmFKFl3JHvMLeXAC6tDEPZIlggxabNQ6Jyt-1vlnlfK-Bfjg=w1280',
+  },
+  {
+    id: 1,
+    nome: 'Zezinho',
+    foto: 'https://lh4.googleusercontent.com/8liHFNt8hJYW514M-FjLzQTnRyzsV3wZLVWTQvWgxP4c9lNx2nVSUFFiAbzEZFKJE2_ILwL4T7LyxeseHBmOU5Q=w1280',
+  },
+  {
+    id: 1,
+    nome: '',
+    foto: 'https://lh6.googleusercontent.com/6pe8T6Jx2-yP5yng9wEBSTyWuWlCZgQu7WTlP9WrduKmQFrohNqXRudBM8Xh_nDJGwg7sSxlPXesh3BTISPWfhQ=w1280',
+  },
+  {
+    id: 1,
+    nome: '',
+    foto: 'https://lh4.googleusercontent.com/_wPVZMUUtOc8-ckbM8_HoKkglKE0BLL1Q6jzNXlRXYkswnSgrO-yVhZp2QcligRR35wwgTjtP8RqvVKjTOoqA9g=w1280',
+  },
+];
+
 export default function App() {
   const renderItemAgenda = ({ item }) => {
     return (
@@ -65,64 +88,37 @@ export default function App() {
       </View>
     );
   };
+  
+  const renderItem = ({ item }) => {
+    return (
+      <View>
+        <View style={styles.FlatList2}>
+          <Text style={styles.flatText}>{item.nome}<Image
+            style={styles.FlatListImage}
+            source={{ uri: item.foto }}
+          /></Text>
+          
+          </View>
+      </View>
+    );
+  };
   return (
     <View style={styles.container}>
       <ScrollView>
-        <View style={styles.header}>
-          <View style={styles.header_icon}>
-            <View style={styles.header_icon2}>
-              <View style={styles.espaco}>
-                <Image
-                  source={require('../../assets/arrow.png')}
-                  style={styles.imagens}
-                />
-              </View>
-              <View style={styles.espaco2}>
-                <Text style={styles.nome}>
-                  Zezinho{' '}
-                  <Image
-                    source={require('../../assets/arrow2.png')}
-                    style={styles.imagens2}
-                  />
-                </Text>
-              </View>
-            </View>
-            <View style={styles.header_icon2}>
-              <View style={styles.espaco3}>
-                <Image
-                  source={require('../../assets/video.png')}
-                  style={styles.imagens3}
-                />
-              </View>
-              <View style={styles.espaco}>
-                <Image
-                  source={require('../../assets/editing.png')}
-                  style={styles.imagens}
-                />
-              </View>
-            </View>
-          </View>
-          <View style={styles.abas}>
-            <View style={styles.abas_text}>
-              <Text style={styles.abas_text_sele}>Bate-Papos</Text>
-            </View>
-            <View style={styles.abas_text}>
-              <Text style={styles.abas_text}>Ligações</Text>
-            </View>
-            <View style={styles.abas_text}>
-              <Text style={styles.abas_text}>Solicitações</Text>
-            </View>
-          </View>
-        </View>
 
-        <View style={styles.inputTextView}>
-          <Image
-            source={require('../../assets/search.png')}
-            style={styles.imagens5}></Image>
-          <TextInput
-            placeholder="Search"
-            placeholderTextColor="lightgray"
-            style={styles.textInput}></TextInput>
+      <View style={styles.FlatList1}>
+      <FlatList
+        data={DATA}
+        renderItem={renderItem}
+        keyExtractor={(item) => item.id}
+        horizontal={true}
+        contentContainerStyle={{
+          flexDirection: 'row',
+          flexWrap: 'nowrap',
+          justifyContent: 'space-between',
+          //backgroundColor:"red",  
+      }}
+      />
         </View>
 
         <FlatList
@@ -221,11 +217,11 @@ const styles = StyleSheet.create({
   },
   espaco2: {
     padding: 5,
-    paddingRight: 20,
+    paddingRight: 40,
   },
   espaco3: {
     padding: 5,
-    paddingLeft: 80,
+    paddingLeft: 100,
   },
   abas: {
     flexDirection: 'row',
@@ -246,8 +242,8 @@ const styles = StyleSheet.create({
     borderColor: 'white',
     borderWidth: 3,
     borderLeftWidth: 0,
-    borderTopWidth: 0,
     borderRightWidth: 0,
+    borderTopWidth: 0,
   },
   textInput: {
     paddingHorizontal: 10,
@@ -265,5 +261,30 @@ const styles = StyleSheet.create({
     marginTop: 10,
     marginHorizontal: 5,
     height: 25,
+  },
+  FlatListImage: {
+    height: 25,
+    width: 25,
+    //backgroundColor:'blue',
+    
+  },
+  FlatList1: {
+    justifyContent: 'space-between',
+    flexDirection: 'row',
+  },
+  flatText: {
+    paddingTop:1,
+    fontSize:20,
+    color: "white",
+    height: 40,
+    maxWidth:100,
+    flexDirection: 'row',
+    marginRight: 50,
+    justifyContent: 'space-between',
+    fontWeight: "bold",
+  },
+  FlatList2: {
+    justifyContent: 'space-between',
+    flexDirection: 'row',
   },
 });
