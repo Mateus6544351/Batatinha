@@ -91,7 +91,7 @@ export default function App() {
   const navigation = useNavigation<LoginProps>();
 
     function irParaTelaHome(){
-        navigation.navigate('Login');
+        navigation.navigate('Home');
       }
 
   const renderItemAgenda = ({ item }) => {

@@ -13,7 +13,7 @@ const Login = () => {
     const navigation = useNavigation<LoginProps>();
 
     function irParaTelaHome(){
-        navigation.navigate('Home');
+        navigation.navigate('Direct');
       }
 
     return(
