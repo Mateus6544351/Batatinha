@@ -11,6 +11,12 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import Constants from 'expo-constants';
+import { NativeStackNavigatorProps } from "@react-navigation/native-stack/lib/typescript/src/types";
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import { StackNavigatorParamList } from "../../../types";
+import {useNavigation} from '@react-navigation/native';
+
+type LoginProps = NativeStackNavigationProp<StackNavigatorParamList,"Login">;
 
 const dados = [
   {
@@ -49,21 +55,16 @@ const dados = [
 const DATA = [
   {
     id: 1,
-    nome: '',
-    foto: 'https://lh5.googleusercontent.com/CNgzJPG3Ssk301DIy_jBgQy165V_P2f6cgykQv6JmFKFl3JHvMLeXAC6tDEPZIlggxabNQ6Jyt-1vlnlfK-Bfjg=w1280',
-  },
-  {
-    id: 1,
     nome: 'Zezinho',
     foto: 'https://lh4.googleusercontent.com/8liHFNt8hJYW514M-FjLzQTnRyzsV3wZLVWTQvWgxP4c9lNx2nVSUFFiAbzEZFKJE2_ILwL4T7LyxeseHBmOU5Q=w1280',
   },
   {
-    id: 1,
+    id: 2,
     nome: '',
     foto: 'https://lh6.googleusercontent.com/6pe8T6Jx2-yP5yng9wEBSTyWuWlCZgQu7WTlP9WrduKmQFrohNqXRudBM8Xh_nDJGwg7sSxlPXesh3BTISPWfhQ=w1280',
   },
   {
-    id: 1,
+    id: 3,
     nome: '',
     foto: 'https://lh4.googleusercontent.com/_wPVZMUUtOc8-ckbM8_HoKkglKE0BLL1Q6jzNXlRXYkswnSgrO-yVhZp2QcligRR35wwgTjtP8RqvVKjTOoqA9g=w1280',
   },
@@ -86,6 +87,13 @@ const DATA2 = [
 ];
 
 export default function App() {
+
+  const navigation = useNavigation<LoginProps>();
+
+    function irParaTelaHome(){
+        navigation.navigate('Login');
+      }
+
   const renderItemAgenda = ({ item }) => {
     return (
       <View style={styles.item}>
@@ -139,6 +147,12 @@ export default function App() {
       <ScrollView>
 
       <View style={styles.FlatList1}>
+        <TouchableOpacity onPress={irParaTelaHome}>
+        <Image 
+            style={styles.botao_voltar}
+            source={{ uri: "https://lh5.googleusercontent.com/CNgzJPG3Ssk301DIy_jBgQy165V_P2f6cgykQv6JmFKFl3JHvMLeXAC6tDEPZIlggxabNQ6Jyt-1vlnlfK-Bfjg=w1280" }}
+          />
+        </TouchableOpacity>
       <FlatList
         data={DATA}
         renderItem={renderItem}
@@ -148,6 +162,7 @@ export default function App() {
           flexDirection: 'row',
           flexWrap: 'nowrap',
           justifyContent: 'space-between',
+          //alignContent: 'center',
           //backgroundColor:"red",  
       }}
       />
@@ -190,6 +205,13 @@ const styles = StyleSheet.create({
     //backgroundColor:'blue',
     borderRadius: 50,
     marginRight: 5,
+  },
+  botao_voltar: {
+    height: 25,
+    width: 25,
+    marginTop: 10,
+    marginRight: 20,
+    //backgroundColor:'blue',
   },
 
   item: {
@@ -339,7 +361,7 @@ const styles = StyleSheet.create({
     height: 40,
     maxWidth:150,
     flexDirection: 'row',
-    marginRight: 43,
+    marginRight: 25,
     justifyContent: 'space-between',
     fontWeight: "bold",
   },
